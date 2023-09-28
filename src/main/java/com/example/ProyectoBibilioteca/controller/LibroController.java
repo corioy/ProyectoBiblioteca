@@ -5,9 +5,7 @@ import com.example.ProyectoBibilioteca.service.LibroI;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,6 +20,12 @@ public class LibroController {
     public ResponseEntity<List<LibroDto>> findAllLibros(){
         List<LibroDto> lista =  libroService.findAllLibros();
         return new ResponseEntity<> (lista, HttpStatus.OK);
+    }
+
+    @PostMapping("/save")
+    public  ResponseEntity<String> saveLibros(@RequestBody LibroDto librodto) {
+     String mensaje =   libroService.saveLibro(librodto);
+        return new ResponseEntity<>(mensaje, HttpStatus.CREATED);
     }
 
 }
