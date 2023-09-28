@@ -1,0 +1,41 @@
+
+INSERT INTO public.libro (libro_id, genre, publish_date, title)
+VALUES
+    (1, 'Ficción', '2023-09-27', 'El Viaje del Héroe'),
+    (2, 'No ficción', '2023-09-28', 'Historia del Arte'),
+    (3, 'Ciencia Ficción', '2023-09-29', 'Dune'),
+    (4, 'Aventura', '2023-09-30', 'La Isla del Tesoro'),
+    (5, 'Misterio', '2023-10-01', 'Sherlock Holmes: Estudio en Escarlata'),
+    (6, 'Romance', '2023-10-02', 'Orgullo y Prejuicio'),
+    (7, 'Fantasía', '2023-10-03', 'El Hobbit'),
+    (8, 'Biografía', '2023-10-04', 'Steve Jobs: La Biografía'),
+    (9, 'Drama', '2023-10-05', 'Los Miserables'),
+    (10, 'Ciencia', '2023-10-06', 'Breve Historia del Tiempo');
+
+INSERT INTO public.autor (autor_id, "name", surname)
+VALUES
+    (1, 'John', 'Doe'),
+    (2, 'Jane', 'Smith'),
+    (3, 'Michael', 'Johnson'),
+    (4, 'Emily', 'Brown'),
+    (5, 'William', 'Wilson'),
+    (6, 'Olivia', 'Davis'),
+    (7, 'James', 'Lee'),
+    (8, 'Sophia', 'Moore'),
+    (9, 'Daniel', 'Taylor'),
+    (10, 'Isabella', 'Anderson');
+
+
+INSERT INTO public.libro_autor (libro_id, autor_id)
+VALUES
+    (1, 1),
+    (2, 2),
+    (3, 3),
+    (4, 4),
+    (5, 5),
+    (6, 6),
+    (7, 7),
+    (8, 8),
+    (9, 9),
+    (10, 10);
+
