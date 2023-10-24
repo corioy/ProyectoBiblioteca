@@ -1,12 +1,17 @@
 package com.example.ProyectoBibilioteca.service;
 
 import com.example.ProyectoBibilioteca.dto.LibroDto;
+import com.example.ProyectoBibilioteca.mapper.MapperInfoReducida;
 import com.example.ProyectoBibilioteca.mapper.MapperLibro;
 import com.example.ProyectoBibilioteca.model.Libro;
 import com.example.ProyectoBibilioteca.repository.LibroRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,11 +20,25 @@ import java.util.stream.Collectors;
 public class LibroImpl  implements LibroI{
 
     private final LibroRepository libroRepository;
+
+
+
+
     @Override
     public List<LibroDto> findAllLibros() {
-        List<LibroDto> listaLibros =   libroRepository.findAll().stream()
+        List<LibroDto> listaLibros =
+                libroRepository.findAll().stream()
                                              .map(MapperLibro::toDto)
                                              .collect(Collectors.toList());
+        return listaLibros;
+
+
+    }
+    @Override
+    public List<LibroDto> findAllInfoReducida() {
+        List<LibroDto> listaLibros =   libroRepository.findAll().stream()
+                .map(MapperInfoReducida::toDto)
+                .collect(Collectors.toList());
         return listaLibros;
 
 
@@ -43,7 +62,7 @@ public class LibroImpl  implements LibroI{
     @Override
     public String updateLibro(Long id, LibroDto libroDto) {
 
-        Libro libro = libroRepository.findById(id).orElseThrow();
+        Libro libro = libroRepository.findById(id).orElse(null);
 
         libro.setTitle(libroDto.getTitle());
         libro.setGenre(libroDto.getGenre());
@@ -60,5 +79,14 @@ public class LibroImpl  implements LibroI{
     public String deleteLibro(Long id) {
         libroRepository.deleteById(id);
         return "el libro: " + id + " fue eliminado";
+    }
+
+
+    public   List<Libro>  filterLibros(LocalDate publishDate){
+
+        List<Libro> libro = libroRepository.findAll();
+
+        return libro.stream().filter(p -> p.getPublishDate().equals(LocalDate.now()))
+                .collect(Collectors.toList());
     }
 }

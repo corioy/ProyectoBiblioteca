@@ -13,4 +13,6 @@ public interface LibroI {
    String updateLibro(Long id, LibroDto libroDto);
    String deleteLibro(Long id);
 
+   List<LibroDto> findAllInfoReducida();
+
 }

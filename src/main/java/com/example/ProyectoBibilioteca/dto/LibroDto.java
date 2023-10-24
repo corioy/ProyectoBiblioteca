@@ -4,6 +4,7 @@ import com.example.ProyectoBibilioteca.model.Autor;
 import com.example.ProyectoBibilioteca.model.Libro;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Set;
 
@@ -16,7 +17,7 @@ import java.util.Set;
 public class LibroDto {
 
      private String title;
-     private Date publishDate;
+     private LocalDate publishDate;
      private String genre;
      private Set<Autor> autores;
 }

@@ -3,6 +3,7 @@ package com.example.ProyectoBibilioteca.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -20,7 +21,7 @@ public class Libro {
     @Column
     private String title;
     @Column
-    private Date publishDate;
+    private LocalDate publishDate;
     @Column
     private String genre;
     @ManyToMany(cascade = CascadeType.ALL)
