@@ -86,7 +86,7 @@ public class LibroImpl  implements LibroI{
 
         List<Libro> libro = libroRepository.findAll();
 
-        return libro.stream().filter(p -> p.getPublishDate().equals(LocalDate.now()))
+        return libro.stream().filter(p -> p.getPublishDate().equals(publishDate))
                 .collect(Collectors.toList());
     }
 }
